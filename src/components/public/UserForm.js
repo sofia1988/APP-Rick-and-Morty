@@ -101,7 +101,7 @@ const UserForm = () => {
           <div className="col-12 col-md-8">
             <button
               disabled={!areEquals || pass} //si las claves no son iguales no funciona el boton
-              className="w-100 btn btn-success btn-lg"
+              className="w-100 btn btn-dark btn-lg"
               type="submit"
               onClick={handleSubmit}
             >

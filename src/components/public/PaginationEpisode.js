@@ -28,7 +28,7 @@ const PaginationEpisode = ({ prev, next, onPrevious, onNext }) => {
           <li className="page-item">
             {
               next ?
-                <button className="page-link text-white" href="#" onClick={handleNext} aria-label="Next">
+                <button className="page-link text-dark" href="#" onClick={handleNext} aria-label="Next">
                   <span aria-hidden="true">&raquo;</span>
                 </button>
                 :

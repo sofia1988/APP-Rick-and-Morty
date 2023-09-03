@@ -1,61 +1,68 @@
-import React, { useEffect, useState } from 'react'
-import Logo from './sanchez.svg';
+import React, { useEffect, useRef, useState } from 'react'
+
 import LogoEnojado from './enojado.svg';
-import Dl from './ld.svg';
+import Ld from './ld.svg';
 
 const Navbar = () => {
-    const [logo, setLogo] = useState(Logo);
+
+    const [_, setIsMouseOverLogo] = useState(false);
+    const logoRef = useRef(null);
 
     useEffect(() => {
-        function onMouseMove(event) {
-            if (event.clientY < 100) {
-                setLogo(LogoEnojado);
-            } else {
-                setLogo(Dl);
-            }
+        const logoElement = logoRef.current
+        console.log(logoElement);
+        const onMouseEnter = () => {
+            setIsMouseOverLogo(true)
+            logoElement.src = LogoEnojado;
         }
 
-        window.addEventListener('mousemove', onMouseMove);
+
+        const onMouseLeave = () => {
+            setIsMouseOverLogo(false)
+            logoElement.src = Ld;
+        }
+
+        logoElement.addEventListener('mouseenter', onMouseEnter);
+        logoElement.addEventListener('mouseleave', onMouseLeave);
 
         return () => {
-            window.removeEventListener('mousemove', onMouseMove);
+            logoElement.addEventListener('mouseenter', onMouseEnter);
+            logoElement.addEventListener('mouseleave', onMouseLeave);
         }
     }, []);
 
     return (
-        <div className='container'>
-            <div className='row'>
-                <div className='container col'>
-                    <div className='col-2 pt-3'>
-                        <a className="navbar-brand" href="#">
-                            <img src={logo} width="250" height="150" alt="logo" />
-                        </a>
-                    </div>
-                </div>
-                <header className='col pt-5 d-flex justify-content-end' >
-                    <nav className=" navbar navbar-expand-lg  ">
-                        <div className="container-fluid">
-
-                            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                                <span className="navbar-toggler-icon"></span>
-                            </button>
-                            <div className="collapse navbar-collapse" id="navbarNav">
-                                <ul className="navbar-nav">
-                                    <li className="nav-item">
-                                        <a className="nav-link active text-white" aria-current="page" href="/.">Home</a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a className="nav-link text-white" href="/episode">Episodios</a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a className="nav-link text-white" href="/user-form">Formulario</a>
-                                    </li>
-                                </ul>
-                            </div>
+        <div className='bg'>
+            <div className='container'>
+                <div className='row py-2'>
+                    <div className='container col'>
+                        <div className='col-2 pt-3'>
+                            <a className="navbar-brand" href="">
+                                <img src={Ld} ref={logoRef} width="250" height="150" alt="logo" />
+                            </a>
                         </div>
-                    </nav>
-                </header>
+                    </div>
+                    <header className='col pt-5 d-flex justify-content-end' >
+                        <nav className=" navbar navbar-expand-lg  ">
+                            <div className="container-fluid">
+                                <div className="collapse navbar-collapse" id="navbarNav">
+                                    <ul className="navbar-nav">
+                                        <li className="nav-item">
+                                            <a className="nav-link active text-white" aria-current="page" href="/.">Home</a>
+                                        </li>
+                                        <li className="nav-item">
+                                            <a className="nav-link text-white" href="/episode">Episodios</a>
+                                        </li>
+                                        <li className="nav-item">
+                                            <a className="nav-link text-white" href="/user-form">Formulario</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                    </header>
 
+                </div>
             </div>
         </div>
     )

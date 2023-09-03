@@ -1,7 +1,10 @@
 body {
   font-family: 'Phudu', cursive;
-}
 
+}
+.bg {
+  background-color:#A3A3CD;
+}
 .App {
   text-align: center;
 }
