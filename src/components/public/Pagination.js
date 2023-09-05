@@ -2,13 +2,6 @@ import React from 'react'
 
 const Pagination = ({ prev, next, onPrevious, onNext }) => {
 
-  const handlePrevious = () => {
-    onPrevious();
-  }
-
-  const handleNext = () => {
-    onNext();
-  }
 
   return (
     <div className='container my-4'>
@@ -17,7 +10,7 @@ const Pagination = ({ prev, next, onPrevious, onNext }) => {
           <li className="page-item">
             {
               prev ?
-                <button className="page-link" href="#" onClick={handlePrevious} aria-label="Previous">
+                <button className="page-link" href="#" onClick={onPrevious} aria-label="Previous">
                   <span aria-hidden="true">&laquo;</span>
                 </button>
                 :
@@ -28,7 +21,7 @@ const Pagination = ({ prev, next, onPrevious, onNext }) => {
           <li className="page-item">
             {
               next ?
-                <button className="page-link text-dark" href="#" onClick={handleNext} aria-label="Next">
+                <button className="page-link text-dark" href="#" onClick={onNext} aria-label="Next">
                   <span aria-hidden="true">&raquo;</span>
                 </button>
                 :

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Episode from './Episode'
-import PaginationEpisode from './PaginationEpisode'
+import Pagination from './Pagination';
 import RickAndMortyService from '../../services/RickAndMorty.service';
 import { API_RM } from "../../constants/Api.constants";
 
@@ -38,7 +38,7 @@ const Episodes = () => {
             <div className="row g-0 mt-4 mb-4" >
                 {episodeList}
             </div>
-            <PaginationEpisode prev={info.prev} next={info.next} onPrevious={onPrevious} onNext={onNext} ></PaginationEpisode>
+            <Pagination prev={info.prev} next={info.next} onPrevious={onPrevious} onNext={onNext} ></Pagination>
         </div>
     )
 }
